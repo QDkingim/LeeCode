@@ -15,12 +15,33 @@ var intersect = function (nums1, nums2) {
     for (let i = 0; i < nums1.length; i++) {
         let sum1 = 0,
             sum2 = 0; // 判断在num1和num2中出现的次数
-        for (let j = 0; j < nums2.length; j++) {
-            if (nums1[i] === nums2[j]) {
-                sum2++
+
+        if (result.length !== 0) {
+            let flag = 0
+            for (let a = 0; a < result.length; a++) {
+                if (nums1[i] !== result[a]) {
+                    flag++
+                }
+            }
+            if (flag === result.length) {
+                for (let j = 0; j < nums2.length; j++) {
+                    if (nums1[i] === nums2[j]) {
+                        sum2++
+                    }
+                }
+            }
+
+        } else {
+            for (let j = 0; j < nums2.length; j++) {
+                if (nums1[i] === nums2[j]) {
+                    sum2++
+                }
             }
         }
-        if (sum2 > 1) {
+
+
+
+        if (sum2 > 0) {
             nums1.forEach(item => {
                 if (item === nums1[i]) {
                     sum1++
@@ -43,4 +64,4 @@ var intersect = function (nums1, nums2) {
 
 };
 
-console.log(intersect([4, 9, 5], [9, 4, 9, 8, 4]));
+console.log(intersect([1, 2, 2, 1], [1, 2]));
